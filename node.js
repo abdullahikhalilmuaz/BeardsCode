@@ -1,22 +1,20 @@
-var code = Array.from(document.querySelectorAll(".code"));
-  var copy = Array.from(document.querySelectorAll(".copy"));
-  code.forEach((element, index) => {
-    copy[index].addEventListener("click", ()=> {
-      navigator.clipboard.writeText(element.textContent)
-      alert ("Copied successfully!")
-      var copyDetails = Array.from(document.querySelectorAll(".copy-details"))
-      copyDetails.classList.remove('active')
-      var editor = Array.from(document.querySelectorAll(".copy-details"))
-      copyDetails.classList.remove('active')
-    })
-  });
+var rbks = document.getElementById("run-button")
+var editor = document.getElementById("code-editor")
+var output = document.getElementById("code-review")
+rbks.addEventListener("click", ()=> {
+    const code =editor.value
+    var htmlDoc = document.implementation.createHTMLDocument()
+    htmlDoc.body.innerHTML = code 
+    output.innerHTML = htmlDoc.body.innerHTML
+})
 
+function show() {
+    var one = document.querySelector(".one")
+    var two = document.querySelector(".two")
+    var three = document.querySelector(".three")
+    document.querySelector(".side-nav").classList.toggle('active')    
 
-
-//   <div class="details">
-//   <img src="../images/copy.jpg"class="copy" style="width: 22px; cursor: pointer;" id="copy">
-//   <div class="copy-details">
-//       copied successfuly! <br>
-//       <a href="/profile/editor.html" class="edit">Editor ?</a>
-//   </div>
-// </div>
+    one.classList.toggle('active')
+    two.classList.toggle('active')
+    three.classList.toggle('active')
+}
